@@ -80,7 +80,7 @@ defined('C5_EXECUTE') or die(_("Access Denied."));
 	<?php  } ?>
 	<?php  
 	$ih = Loader::helper('concrete/interface');
-	print $ih->button(t('Cancel'), $this->url('/dashboard/easy_news/'), 'left');
+	print $ih->button(t('Cancel'), $this->url('/dashboard/titans_news/'), 'left');
 	print $ih->submit($buttonText, 'news-form');
 	?>
 	<div class="ccm-spacer">&nbsp;</div>
@@ -139,8 +139,8 @@ defined('C5_EXECUTE') or die(_("Access Denied."));
 					print $user->getUserName();
 					?>
 				</td>
-				<td><A href="<?php  echo $this->url('/dashboard/easy_news', 'edit', $cobj->getCollectionID())?>"><?php  echo t('Edit')?></a></td>
-				<td><A href="<?php  echo $this->url('/dashboard/easy_news', 'delete', $cobj->getCollectionID())?>"><?php  echo t('Delete')?></a></td>
+				<td><A href="<?php  echo $this->url('/dashboard/titans_news', 'edit', $cobj->getCollectionID())?>"><?php  echo t('Edit')?></a></td>
+				<td><A href="<?php  echo $this->url('/dashboard/titans_news', 'delete', $cobj->getCollectionID())?>"><?php  echo t('Delete')?></a></td>
 			</tr>
 			<?php   } ?>
 			

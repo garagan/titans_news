@@ -2,11 +2,11 @@
 
 defined('C5_EXECUTE') or die(_("Access Denied."));
 
-class EasyNewsPackage extends Package {
+class TitansNewsPackage extends Package {
 
-	protected $pkgHandle = 'easy_news';
-	protected $appVersionRequired = '5.4.0';
-	protected $pkgVersion = '1.1';
+	protected $pkgHandle = 'titans_news';
+	protected $appVersionRequired = '5.6.0';
+	protected $pkgVersion = '0.1';
 	
 	function __construct(){
 		Loader::library('controller',$this->pkgHandle); //Used by controllers
@@ -14,11 +14,11 @@ class EasyNewsPackage extends Package {
 	}
 	
 	public function getPackageDescription() {
-		return t('Add multiple news area to your site.');
+		return t('Add news posting area to your site with facebook cross-posting.');
 	}
 	
 	public function getPackageName() {
-		return t('Easy News');
+		return t('Titans News');
 	}
 	
 	public function install() {
@@ -27,16 +27,16 @@ class EasyNewsPackage extends Package {
 		Loader::model('attribute/categories/collection');
 		
 		// install attributes
-		$cab1 = CollectionAttributeKey::add('BOOLEAN',array('akHandle' => 'easynews_section', 'akName' => t('NEWS Section'), 'akIsSearchable' => true), $pkg);
+		$cab1 = CollectionAttributeKey::add('BOOLEAN',array('akHandle' => 'titansnews_section', 'akName' => t('NEWS Section'), 'akIsSearchable' => true), $pkg);
 
 		//install pages
-		$def = SinglePage::add('/dashboard/easy_news', $pkg);
-		$def->update(array('cName'=>'Easy News', 'cDescription'=>t('Manage site news.')));
-		$def = SinglePage::add('/dashboard/easy_news/help', $pkg);
-		$def->update(array('cName'=>'Easy News Help', 'cDescription'=>t('Easy News help.')));
+		$def = SinglePage::add('/dashboard/titans_news', $pkg);
+		$def->update(array('cName'=>'Titans News', 'cDescription'=>t('Manage site news.')));
+		$def = SinglePage::add('/dashboard/titans_news/help', $pkg);
+		$def->update(array('cName'=>'Titans News Help', 'cDescription'=>t('Titans News help.')));
 		
 		//install block
-		BlockType::installBlockTypeFromPackage('easynews_list', $pkg); 
+		BlockType::installBlockTypeFromPackage('titansnews_list', $pkg); 
 
 	}
 }

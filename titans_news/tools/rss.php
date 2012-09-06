@@ -1,7 +1,7 @@
 <?php 
 defined('C5_EXECUTE') or die(_("Access Denied.")); 
 
-$pkgHandle = 'easy_news';
+$pkgHandle = 'titans_news';
 
 Loader::library('controller',$pkgHandle);
 
@@ -12,7 +12,7 @@ Loader::model('page_list');
 
 Loader::model("collection_types");
 $ct = Collection::getByID($cat);
-//$a=$ct->getAttribute('easynews_section');
+//$a=$ct->getAttribute('titansnews_section');
 //if(empty($a)||(!$a)){
 //	die();
 //}
@@ -33,7 +33,7 @@ $rss->useCached();
 $rss->title=SITE.' - '.$vObj->cvName;
 $rss->description=$vObj->cvName.' updates';
 $rss->link=SITE_URL;
-$rss->syndicationURL=EasyNewsController::getRssPagePath().'?c='.$cat;
+$rss->syndicationURL=TitansNewsController::getRssPagePath().'?c='.$cat;
 
 
 //channel items/entries

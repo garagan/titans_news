@@ -1,13 +1,13 @@
 <?php  
 defined('C5_EXECUTE') or die(_("Access Denied.")); 
-class DashboardEasyNewsController extends EasyNewsDashboardController {
+class DashboardTitansNewsController extends TitansNewsDashboardController {
 	
 	public $helpers = array('html','form');
 	
 	public function on_start() {
 		$subnav = array(
-			array(View::url('/dashboard/easy_news'),t('Easy News Manage'), true), 
-			array(View::url('/dashboard/easy_news/help'),'Help')
+			array(View::url('/dashboard/titans_news'),t('Titans News Manage'), true), 
+			array(View::url('/dashboard/titans_news/help'),'Help')
 		);
 		$this->set('subnav', $subnav);
 		Loader::model('page_list');
@@ -32,7 +32,7 @@ class DashboardEasyNewsController extends EasyNewsDashboardController {
 
 	protected function loadNewsSections() {
 		$newsSectionList = new PageList();
-		$newsSectionList->filterByEasynewsSection(1);
+		$newsSectionList->filterByTitansnewsSection(1);
 		$newsSectionList->sortBy('cvName', 'asc');
 		$tmpSections = $newsSectionList->get();
 		$sections = array();
@@ -50,7 +50,7 @@ class DashboardEasyNewsController extends EasyNewsDashboardController {
 		if (in_array($news->getCollectionParentID(), array_keys($sections))) {
 			$this->set('news', $news);	
 		} else {
-			$this->redirect('/dashboard/easy_news/');
+			$this->redirect('/dashboard/titans_news/');
 		}
 	}
 	
@@ -61,7 +61,7 @@ class DashboardEasyNewsController extends EasyNewsDashboardController {
 		if (in_array($news->getCollectionParentID(), array_keys($sections))) {
 			$this->set('news', $news);	
 		} else {
-			$this->redirect('/dashboard/easy_news/');
+			$this->redirect('/dashboard/titans_news/');
 		}
 	}	
 
@@ -89,7 +89,7 @@ class DashboardEasyNewsController extends EasyNewsDashboardController {
 				//$rss='<link rel="alternate" type="application/rss+xml" title="'.Loader::helper('text')->entities($p->getCollectionName()).'" href="/'.$this->site($this->rssPageName).'" />';
 				//$p->setAttribute('header_extra_content',$rss);
 				$this->saveData($p);
-				$this->redirect('/dashboard/easy_news/', 'news_added');
+				$this->redirect('/dashboard/titans_news/', 'news_added');
 			}
 		}
 	}
@@ -109,7 +109,7 @@ class DashboardEasyNewsController extends EasyNewsDashboardController {
 					$p->move($parent);
 				}
 				$this->saveData($p);
-				$this->redirect('/dashboard/easy_news/', 'news_updated');
+				$this->redirect('/dashboard/titans_news/', 'news_updated');
 			}
 		}
 	}
@@ -120,7 +120,7 @@ class DashboardEasyNewsController extends EasyNewsDashboardController {
 		if ($this->isPost()) {
 			$p = Page::getByID($this->post('newsID'));
 			$p->delete();
-			$this->redirect('/dashboard/easy_news/', 'news_deleted');
+			$this->redirect('/dashboard/titans_news/', 'news_deleted');
 		}
 	}	
 

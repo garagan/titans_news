@@ -33,11 +33,11 @@
 			Loader::library('controller',$pkgHandle);
 			$btID = $b->getBlockTypeID();
 			$bt = BlockType::getByID($btID);
-			$path=EasyNewsController::getRssPagePath().'?c='.$cobj->getCollectionParentID();
-			$imagepath=EasyNewsController::getPackageUrl().'/templates/img/rss.png';
+			$path=TitansNewsController::getRssPagePath().'?c='.$cobj->getCollectionParentID();
+			$imagepath=TitansNewsController::getPackageUrl().'/templates/img/rss.png';
 			$rss='<link rel="alternate" type="application/rss+xml" title="Feed" href="'.$path.'" />';
 			?>
-			<div id="easy_news_rss" style="text-align:right"><a href="<?php  echo $path; ?>"><img src="<?php  echo $imagepath; ?>"></img></a></div>
+			<div id="titans_news_rss" style="text-align:right"><a href="<?php  echo $path; ?>"><img src="<?php  echo $imagepath; ?>"></img></a></div>
 		<?php   
 	} 
 	?>

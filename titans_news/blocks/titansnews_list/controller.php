@@ -1,17 +1,17 @@
 <?php  
 
 	defined('C5_EXECUTE') or die(_("Access Denied."));
-	class EasynewsListBlockController extends BlockController {
+	class TitansnewsListBlockController extends BlockController {
 
-		const pkgHandle = 'easy_news';
-		protected $btTable = 'btEasyNewsList';
+		const pkgHandle = 'titans_news';
+		protected $btTable = 'btTitansNewsList';
 		protected $btInterfaceWidth = "500";
 		protected $btInterfaceHeight = "350";
 		
 		public function on_page_view(){
 			Loader::library('controller',$pkgHandle);
-			$path=EasyNewsController::getRssPagePath().'?c='.$this->cParentID;
-			$imagepath=EasyNewsController::getPackageUrl().'/templates/img/rss.png';
+			$path=TitansNewsController::getRssPagePath().'?c='.$this->cParentID;
+			$imagepath=TitansNewsController::getPackageUrl().'/templates/img/rss.png';
 			$rss='<link rel="alternate" type="application/rss+xml" title="Feed" href="'.$path.'" />';
 			$this->addHeaderItem($rss,'CONTROLLER');
 		}
@@ -24,7 +24,7 @@
 		}
 		
 		public function getBlockTypeName() {
-			return t("Easy News List");
+			return t("Titans News List");
 		}
 		
 		public function getJavaScriptStrings() {
@@ -36,7 +36,7 @@
 			$db = Loader::db();
 			$bID = $this->bID;
 			if ($this->bID) {
-				$q = "select num, cParentID, cThis, orderBy, ctID, displayAliases, rss from btEasyNewsList where bID = '$bID'";
+				$q = "select num, cParentID, cThis, orderBy, ctID, displayAliases, rss from btTitansNewsList where bID = '$bID'";
 				$r = $db->query($q);
 				if ($r) {
 					$row = $r->fetchRow();
@@ -143,7 +143,7 @@
 			//	echo $rssUrl;
 			$this->set('c', $c);
 			$this->set('uh', $uh);
-			$this->set('bt', BlockType::getByHandle('easynews_list'));
+			$this->set('bt', BlockType::getByHandle('titansnews_list'));
 			$this->set('displayAliases', true);
 		}
 	
@@ -159,7 +159,7 @@
 			}
 			$uh = Loader::helper('concrete/urls');
 			$this->set('uh', $uh);
-			$this->set('bt', BlockType::getByHandle('easynews_list'));
+			$this->set('bt', BlockType::getByHandle('titansnews_list'));
 		}
 		
 		function save($args) {
